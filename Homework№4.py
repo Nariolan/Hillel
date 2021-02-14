@@ -39,7 +39,19 @@ except (TypeError, ValueError):
     print("Произошла ошибка")
     my_value_2 = float(input("Введите число с плавающей запятой"))
 
+try:
+    (my_value_2 ** -1)
+except ZeroDivisionError:
+    print("Аргумент не может принимать значение 0")
+    try:
+        my_value = input("Введите число повторно ")
+        my_value_2 = float(my_value)
+    except (TypeError, ValueError):
+        print("Произошла ошибка")
+        my_value_2 = float(input("Введите число с плавающей запятой"))
+
 print(my_value_2 ** -1)
+
 
 ###############Задание№5###############
 my_list = [1, 3, 5, 8, 6, 10]
@@ -53,8 +65,8 @@ for i in range(len(my_list)):
 
 print(my_result)
 
-###############Задание№6###############
-
+# ###############Задание№6###############
+#
 my_list_1 = [2, 7]
 
 my_list_2 = [5, 4]
@@ -69,7 +81,7 @@ my_list=[]
 
 for elem_1 in my_string:
     for elem_2 in my_string:
-        new_value = elem_1 + elem_2
+        new_value = int(elem_1 + elem_2)
         my_list.append(new_value)
         print(new_value)
 
