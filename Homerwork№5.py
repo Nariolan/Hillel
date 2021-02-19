@@ -1,5 +1,5 @@
-#1. Дано целое число (int). Определить сколько нулей в этом числе.
-
+# #1. Дано целое число (int). Определить сколько нулей в этом числе.
+#
 my_value = int(input("Введите число "))
 string_value = str(my_value)
 counter = 0
@@ -11,7 +11,7 @@ for symbol in string_value:
 print("Количество нулей в числе: ", counter)
 
 #2. Дано целое число (int). Определить сколько нулей в конце этого числа.
-
+#
 my_value = int(input("Введите число "))
 string_value = str(my_value)
 counter = 0
@@ -44,7 +44,7 @@ print(my_result)
 # 3b. Даны списки my_list_1 и my_list_2. Создать список my_result в который
 # вначале поместить четные элементы (ИМЕННО ЭЛЕМЕНТЫ) из my_list_1 и потом нечетные элементы из my_list_2.
 # my_list_1 = [1,3,2,4,5], my_list_2 = [10, 20, 15, 25, 22] -> my_result [2, 4, 15, 25]
-
+#
 my_list_1 = [1, 3, 2, 4, 5]
 my_list_2 = [10, 20, 15, 25, 22]
 my_result = []
@@ -69,7 +69,7 @@ print(new_list)
 
 # 5.Дан список my_list. В ЭТОМ списке первый элемент переставить на последнее место.
 # [1,2,3,4] -> [2,3,4,1]. Пересоздавать список нельзя! (используйте метод pop)
-
+#
 my_list = [1, 2, 3, 4]
 my_list.append(my_list[0])
 my_list.pop(0)
@@ -90,34 +90,29 @@ my_int_list = []
 for str in splitted_string_list:
     if str.isdigit():
         my_int_list.append(int(str))
-    else:
-        pass
-summ = 0
-for elem in my_int_list:
-    summ += elem
 
-print(summ)
+print(sum(my_int_list))
 
 #7. Дана строка my_str. Разделите эту строку на пары из двух символов и поместите эти пары в список.
 #Если строка содержит нечетное количество символов, пропущенный второй символ последней пары должен
 #быть заменен подчеркиванием ('_'). Примеры: 'abcd' -> ['ab', 'cd'], 'abcde' -> ['ab', 'cd', e_']
 
 my_str = "2134567"
+print(len(my_str))
+my_list = []
 
-i = 0
-my_list = list(my_str)
-result_list = []
+if not len(my_str) % 2==0:
+    my_str += "_"
 
-if not len(my_str) % 2 == 0:
-    my_list.append("_")
-    for elem in my_list:
-        try:
-            result_list.append(my_list[i]+my_list[i+1])
-            i += 2
-        except:
-            pass
+for symbol in my_str[0:-1]:
 
-print(result_list)
+    index = my_str.index(symbol)
+    if index % 2 == 0:
+        my_list.append(my_str[index]+my_str[index+1])
+
+print(my_list)
+print(my_str)
+
 
 # 8. Дана строка my_str в которой символы не повторяются и два символа l_limit, r_limit,
 # которые точно находятся в этой строке. Причем l_limit левее чем r_limit.
@@ -128,20 +123,9 @@ my_str = "asdfghjkl"
 
 l_limit = "s"
 r_limit = "l"
-sub_string = ""
-
-for char in my_str:
-    if char == l_limit:
-        l_limit_index = my_str.index(char)
-
-
-for char in my_str:
-    if char == r_limit:
-        r_limit_index = my_str.index(char)
-
-
-sub_string = my_str[l_limit_index:r_limit_index]
+sub_string = my_str[my_str.find(l_limit):my_str.find(r_limit)]
 print(sub_string)
+
 
 # 9. Дана строка my_str в которой символы МОГУТ повторяться и два символа l_limit, r_limit,
 # которые точно находятся в этой строке. Причем l_limit левее чем r_limit.
@@ -150,26 +134,12 @@ print(sub_string)
 
 my_str="My long string"
 
-my_str_reversed = my_str[::-1]
-
-l_limit = "o"
 r_limit = "g"
 sub_str = ""
+l_limit = "o"
 
-for elem in my_str_reversed:
-    if elem == r_limit:
-        r_index = my_str_reversed.index(elem)
-
-for elem in my_str_reversed:
-    if elem == l_limit:
-        l_index = my_str_reversed.index(elem)
-
-sub_str = my_str_reversed[(r_index+1):l_index]
-
-
-
-sub_str = sub_str[::-1]
-print(sub_str)
+sub_string = my_str[(my_str.find(l_limit)+1):my_str.rfind(r_limit)]
+print(sub_string)
 
 # 10. Дан список чисел. Определите, сколько в этом списке элементов,
 # которые больше суммы двух своих соседей (слева и справа), и НАПЕЧАТАЙТЕ КОЛИЧЕСТВО таких элементов.
@@ -179,13 +149,10 @@ print(sub_str)
 my_list = [2, 4, 1, 5, 3, 9, 0, 7]
 counter = 0
 
-for elem in my_list:
+for elem in my_list[1:-2]:
     index = my_list.index(elem)
-    try:
-        if elem > my_list[index-1] + my_list[index+1]:
-            counter = counter + 1
-    except:
-        pass
+    if elem > my_list[index - 1] + my_list[index + 1]:
+        counter = counter + 1
 
 print(counter)
 
