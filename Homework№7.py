@@ -87,7 +87,7 @@ my_dict_1 = {"age": 27, "name": "Denis", "country": "Ukraine", "city": "Kharkiv"
 my_dict_2 = {"age": 54, "name": "Valerii", "country": "Ukraine"}
 
 common_keys_list = []
-
+#
 my_set_1 = set(my_dict_1.keys())
 my_set_2 = set(my_dict_2.keys())
 
@@ -104,11 +104,9 @@ print(unique_keys_list)
 my_dict_result = {}
 
 my_set_3 = my_set_1.difference(my_set_2)
-#
-for key in my_dict_1:
-    for elem in my_set_3:
-        if key == elem:
-            my_dict_result[key] = my_dict_1[key]
+
+for key in my_set_3:
+    my_dict_result[key] = my_dict_1[key]
 
 print(my_dict_result)
 
@@ -117,13 +115,20 @@ print(my_dict_result)
 # если ключ есть в двух словарях - поместить пару {ключ: [значение_из_первого_словаря, значение_из_второго_словаря]},
 
 my_keys_set = set(my_dict_1.keys()).union(set(my_dict_2.keys()))
+intersection_set = set(my_dict_1.keys()).intersection(set(my_dict_2.keys()))
+
+diffference_set_1_2 = set(my_dict_1.keys()).difference(my_dict_2.keys())
+diffference_set_2_1 = set(my_dict_2.keys()).difference(my_dict_1.keys())
+
 result_dict = {}
 
 for key in my_keys_set:
-    if key in set((my_dict_1.keys())).difference(set(my_dict_2.keys())):
+    if key in intersection_set:
+        result_dict[key] = [my_dict_2[key], my_dict_1[key]]
+    elif key not in intersection_set and key in diffference_set_1_2:
         result_dict[key] = my_dict_1[key]
-    else:
-        result_dict[key] = [my_dict_1[key], my_dict_2[key]]
+    elif key not in intersection_set and key in diffference_set_2_1:
+        result_dict[key] = my_dict_2[key]
 
 print(result_dict)
 
