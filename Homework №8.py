@@ -28,7 +28,7 @@ def generate_random_email(my_list_1, my_list_2):
     int_part = str(random.randint(100, 999))
     string_part = random_string_generate(5, 7)
     domain_part = random.choice(my_list_2)
-    final_email = f"{name_part}{int_part}@{string_part}.{domain_part}"
+    final_email = f"{name_part}.{int_part}@{string_part}.{domain_part}"
     return final_email
 
 
