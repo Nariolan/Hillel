@@ -38,19 +38,15 @@ def create_dict():
     choice = random.choice([1, 2, 3])
     result_dict = {}
 
-    if choice == 1:
-        for _ in range (dict_size):
-            random_string = random_string_generate()
+    for _ in range(dict_size):
+        random_string = random_string_generate()
+        if choice == 1:
             random_value = random.randint(-100, 100)
             result_dict[random_string] = random_value
-    elif choice == 2:
-        for _ in range(dict_size):
-            random_string = random_string_generate()
+        elif choice == 2:
             random_value = random.uniform(0, 1)
             result_dict[random_string] = random_value
-    else:
-        for _ in range(dict_size):
-            random_string = random_string_generate()
+        else:
             random_value = random.choice(boolean_list)
             result_dict[random_string] = random_value
 
